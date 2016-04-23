@@ -1,25 +1,17 @@
 class Phrase
+  attr_reader :phrase
 
-  attr_reader :input, :hash
+  def initialize(phrase)
+    @phrase = phrase
+  end
 
-  def initialize(input)
-    @input = input
-    @hash  = Hash.new
-    @count = 0
+  def format_phrase(phrase)
+    phrase.downcase.gsub(/[.,!:;&@$%^]/, ' ')
   end
 
   def word_count
-    if @count == 1
-        hash
-      else
-        @count = 1
-      input.gsub(/[!@{$%^&*-+?:.,]/, ' ').downcase.split(' ').map do |word|
-        hash[word].nil? ? hash[word] = 1 : hash[word] += 1
-      end
-      hash
-    end
+    counts = Hash.new(0)
+    format_phrase(phrase).split.each { |word| counts[word] += 1 }
+    counts
   end
 end
-
-p = Phrase.new('all the kings horses and all the kings men')
-p.word_count

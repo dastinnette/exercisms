@@ -3,6 +3,7 @@ gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative 'word_count'
+require 'pry'
 
 class PhraseTest < Minitest::Test
   def test_count_one_word

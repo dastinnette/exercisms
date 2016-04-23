@@ -13,6 +13,9 @@ class Matrix
     end
   end
 
+  def columns
+
+  end
 
 end
 

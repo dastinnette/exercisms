@@ -3,6 +3,7 @@ gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative 'hamming'
+require 'pry'
 
 # Test data version:
 # 11a7e6f Merge pull request #92 from kotp/116_Verbal_Word_Problem

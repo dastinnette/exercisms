@@ -1,25 +1,24 @@
 class Hamming
 
-  def self.compute(sequence_1, sequence_2)
+  def self.compare_strands(a, b)
+    errors = 0
+    a_acids = a.chars
+    b_acids = b.chars
 
-    # if (sequence_1 > sequence_2)
-    #   loop_length = sequence_2.length
-    # else
-    #   loop_length = sequence_1.length
-    # end
-    if sequence_1.length != sequence_2.length
-      raise(ArgumentError)
-    end
-
-    loop_length = sequence_1.length
-
-    counter = 0
-    loop_length.times do |x|
-      if sequence_1[x] != sequence_2[x]
-        counter += 1
+    a.length.times do |i|
+      if a_acids[i] != b_acids[i]
+        errors +=1
       end
     end
-    counter
+    errors
+  end
+
+  def self.compute(a, b)
+    if a.length == b.length
+      compare_strands(a, b)
+    else
+      raise ArgumentError.new("Please test two strands of equal length")
+    end
   end
 
 end

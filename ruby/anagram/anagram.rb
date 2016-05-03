@@ -7,15 +7,15 @@ class Anagram
   end
 
   def match(incoming_words)
-    incoming_words.select do |i_word|
-      find_anagram(i_word)
+    incoming_words.select do |incoming_word|
+      find_anagram(incoming_word)
     end
   end
 
-  def find_anagram(i_word)
+  def find_anagram(incoming_word)
     letters = word.downcase.chars.sort
-      if letters == i_word.downcase.chars.sort
-        i_word unless i_word.downcase == word
+      if letters == incoming_word.downcase.chars.sort
+        incoming_word unless incoming_word.downcase == word
       end
   end
 

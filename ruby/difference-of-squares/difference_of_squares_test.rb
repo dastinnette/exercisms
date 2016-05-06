@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
+require 'minitest/pride'
 require_relative 'difference_of_squares'
 
 # Test data version:
@@ -62,9 +63,4 @@ class DifferenceOfSquaresTest < Minitest::Test
     assert_equal squares.difference, squares.difference
   end
 
-  # Don't forget to define a constant VERSION inside of Squares.
-  def test_bookkeeping
-    skip
-    assert_equal 2, Squares::VERSION
-  end
 end

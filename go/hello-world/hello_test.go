@@ -2,11 +2,6 @@ package hello
 
 import "testing"
 
-// Define a function HelloWorld(string) string.
-//
-// Also define a testVersion with a value that matches
-// the targetTestVersion here.
-
 const targetTestVersion = 2
 
 func TestHelloWorld(t *testing.T) {

@@ -1,8 +1,5 @@
 package leap
 
-// Source: exercism/x-common
-// Commit: 945d08e Merge pull request #50 from soniakeys/master
-
 var testCases = []struct {
 	year        int
 	expected    bool

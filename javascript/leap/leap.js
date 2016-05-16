@@ -1,5 +1,3 @@
-'use strict'
-
 function Year(year) {
   this.year = year
 }

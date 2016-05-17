@@ -1,20 +1,31 @@
-var Bob = function() {};
+var Bob = function() {
+  var isShouting = function(input) {
+    return input.toUpperCase() === input && input.toLowerCase() !== input;
+  };
 
-Bob.prototype.hey = function(input) {
-  var splitInput = input.replace(/[0-9]/g, 'a').split("");
-  var punctuation = splitInput[splitInput.length - 1];
-  var first_word = splitInput[1];
+  var isQuestion = function(input) {
+    return input.charAt(input.length - 1) === '?';
+  };
 
-  if(punctuation == "!" && first_word == first_word.toUpperCase() ||
-     punctuation == "?" && first_word == first_word.toUpperCase()) {
-    return "Whoa, chill out!";
-  } else if(punctuation == "?") {
-      return "Sure.";
-  } else if(input == '' || input == '   ') {
-      return "Fine. Be that way!";
-  } else {
-      return "Whatever.";
-  }
+  var isSilent = function(input) {
+    return /^\s*$/.test(input);
+  };
+
+  this.hey = function(input) {
+    if (isSilent(input)) {
+      return 'Fine. Be that way!';
+    }
+
+    if (isShouting(input)) {
+      return 'Whoa, chill out!';
+    }
+
+    if (isQuestion(input)) {
+      return 'Sure.';
+    }
+
+    return 'Whatever.';
+  };
 };
 
 module.exports = Bob;

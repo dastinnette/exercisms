@@ -1,13 +1,9 @@
 function Gigasecond(date) {
-  this.startDate = date.getTime();
+  this.startDate = date;
 }
 
 Gigasecond.prototype.date = function() {
-  var endDate = new Date(this.startDate + 1000000000000);
-
-  endDate.setSeconds(0);
-  endDate.setMinutes(0);
-  endDate.setHours(0);
+  var endDate = new Date(this.startDate.getTime() + 1e12);
 
   return endDate;
 };

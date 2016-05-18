@@ -2,7 +2,7 @@ function Words() {}
 
 Words.prototype.count = function(words) {
   var wordCount = {};
-  var splitWords = words.toLowerCase().split(/\s+/);
+  var splitWords = words.toLowerCase().trim().split(/\s+/);
 
   splitWords.forEach(function(word) {
     if(wordCount[word] && wordCount.hasOwnProperty(word)) {

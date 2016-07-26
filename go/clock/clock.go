@@ -1,26 +1,71 @@
-// Clock stub file
-
-// To use the right term, this is the package *clause*.
-// You can document general stuff about the package here if you like.
 package clock
 
-// The value of testVersion here must match `targetTestVersion` in the file
-// clock_test.go.
-const testVersion = 3
+import (
+  "strconv"
+)
 
-// Clock API as stub definitions.  No, it doesn't compile yet.
-// More details and hints are in clock_test.go.
+const testVersion = 4
 
-type Clock // Complete the type definition.  Pick a suitable data type.
+type Clock struct {
+  hours, minutes int
+}
 
 func New(hour, minute int) Clock {
+  clock := Clock{};
+  clock.hours = hour;
+  clock.minutes = minute;
+  return clock;
 }
 
-func (Clock) String() string {
+func (clock Clock) String() string {
+  hour := "";
+  minute := "";
+  numberDays := 1;
+  numberHours := 1;
+
+  if clock.minutes > 59 {
+    numberHours = clock.minutes/60;
+    clock.minutes -= (numberHours * 60);
+    clock.hours += (numberHours);
+  } else if clock.minutes < -59 {
+    numberHours = clock.minutes/-60;
+    clock.minutes += (numberHours *60);
+    clock.hours -= numberHours;
+  }
+
+  if clock.minutes < 0 {
+    clock.hours --;
+    clock.minutes = 60 + clock.minutes;
+  }
+
+  if clock.hours > 23 {
+    numberDays = clock.hours/24;
+    clock.hours -= (numberDays * 24);
+  } else if clock.hours < -23 {
+    numberDays = clock.hours/-24;
+    clock.hours += (numberDays * 24);
+  }
+
+  if clock.hours < 0 {
+    clock.hours = 24 + clock.hours;
+  }
+
+  if clock.hours > 9 {
+    hour = strconv.Itoa(clock.hours);
+  } else {
+    hour = "0" + strconv.Itoa(clock.hours);
+  }
+
+  if clock.minutes > 9 {
+    minute = strconv.Itoa(clock.minutes);
+  } else {
+    minute = "0" + strconv.Itoa(clock.minutes);
+  }
+  return hour + ":" + minute;
+
 }
 
-func (Clock) Add(minutes int) Clock {
+func (clock Clock) Add(minutes int) Clock {
+  clock.minutes += minutes;
+  return clock;
 }
-
-// Remember to delete all of the stub comments.
-// They are just noise, and reviewers will complain.

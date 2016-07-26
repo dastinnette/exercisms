@@ -1,9 +1,5 @@
 package clock
 
-// Source: exercism/x-common
-// Commit: 180638f Merge pull request #217 from ErikSchierboom/patch-2
-
-// Test creating a new clock with an initial time.
 var timeTests = []struct {
 	h, m int
 	want string
@@ -29,7 +25,6 @@ var timeTests = []struct {
 	{-121, -5810, "22:10"}, // negative hour and minutes both roll over continuously
 }
 
-// Test adding and subtracting minutes.
 var addTests = []struct {
 	h, m, a int
 	want    string
